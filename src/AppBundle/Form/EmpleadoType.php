@@ -21,7 +21,9 @@ class EmpleadoType extends AbstractType
             ->add('fechaNacimiento')
             ->add('fechaIncorporacion')
             ->add('correoElectronico')
-            ->add('departamento')
+            ->add('departamento', 'choice', array(
+            		'choices' => array('INFORMATICA' => 'INFORMATICA', 'CATASTRO' => 'CATASTRO')
+            ))
         ;
     }
     
