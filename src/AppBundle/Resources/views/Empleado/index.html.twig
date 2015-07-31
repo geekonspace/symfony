@@ -1,0 +1,80 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Empleado list</h1>
+
+	<div>
+	<form action="">
+	<label for="fechaIncorporacion">Fecha de Incorporaci&oacute;n</label>
+	<input type="text" id="fechaIncorporacion" name="fechaIncorporacion" placeholder="Fecha de Incorporaci&oacute;n" />
+	
+	<label for="departamento">Departamento</label>	
+	<select id="departamento" name="departamento">
+	<option value="">Seleccione</option>
+		<option value="CATASTRO">CATASTRO</option>
+		<option value="INFORMATICA">INFORMATICA</option>
+	</select>
+	
+	<button type="submit">Search</button>
+	</form>
+	</div>
+    <br/>
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>
+                        <a href="{{ path('empleado') }}?column=nombre&order={{ order }}">
+            Nombre
+        </a>
+        
+                </th>
+                <th>                        <a href="{{ path('empleado') }}?column=apellidos&order={{ order }}">
+            Apellidos
+        </a></th>
+                <th>Dni</th>
+                <th>                        <a href="{{ path('empleado') }}?column=fechaNacimiento&order={{ order }}">
+            Fecha de Nacimiento
+        </a></th>
+                <th>                        <a href="{{ path('empleado') }}?column=fechaIncorporacion&order={{ order }}">
+            Fecha de Incorporaci&oacute;n
+        </a></th>
+                <th>Correoelectronico</th>
+                <th>Departamento</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('empleado_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{{ entity.dni }}</td>
+                <td>{% if entity.fechaNacimiento %}{{ entity.fechaNacimiento|date('d-m-Y') }}{% endif %}</td>
+                <td>{% if entity.fechaIncorporacion %}{{ entity.fechaIncorporacion|date('d-m-Y') }}{% endif %}</td>
+                <td>{{ entity.correoElectronico }}</td>
+                <td>{{ entity.departamento }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('empleado_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('empleado_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('empleado_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

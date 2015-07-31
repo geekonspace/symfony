@@ -1,0 +1,74 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Empleado
+ *
+ * @ORM\Table(name="empleado")
+ * @ORM\Entity
+ */
+class Empleado
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="bigint", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nombre", type="string", length=255, nullable=false)
+     */
+    private $nombre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="apellidos", type="string", length=255, nullable=false)
+     */
+    private $apellidos;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dni", type="string", length=255, nullable=false)
+     */
+    private $dni;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_nacimiento", type="date", nullable=false)
+     */
+    private $fechaNacimiento;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fecha_incorporacion", type="date", nullable=false)
+     */
+    private $fechaIncorporacion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="correo_electronico", type="string", length=100, nullable=false)
+     */
+    private $correoElectronico;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="departamento", type="string", length=100, nullable=false)
+     */
+    private $departamento;
+
+    
+}
